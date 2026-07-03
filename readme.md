@@ -54,10 +54,10 @@ bun ~/anchor/packages/cli/src/index.ts deploy ollama \
 The image is a one-line wrapper over `docker.io/ollama/ollama:latest` (Anchor
 apps are built, not pulled), so a deploy is effectively a re-tag plus a
 container recreate. Rollout is deliberately `recreate`: blue-green would run
-two Ollamas side by side and double peak RAM on the 16 GB box.
+two Ollamas side by side and double peak RAM on the 11 GiB box.
 
 Resource posture (see `anchor.salem.toml`): one generation at a time, one
-model resident, 10-minute keep-alive, 6G cap - this box shares 16 GB with
+model resident, 10-minute keep-alive, 6G cap - this box shares 11 GiB with
 ~20 containers.
 
 ## History
