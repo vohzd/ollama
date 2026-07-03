@@ -1,0 +1,4 @@
+# Anchor apps are built, not pulled, so this one-line wrapper re-tags the
+# upstream image into the estate registry (build is effectively a no-op).
+# Models live on the external `models` volume, not in the image.
+FROM docker.io/ollama/ollama:latest
