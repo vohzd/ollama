@@ -15,8 +15,10 @@
 name = "ollama"
 domains = ["ollama.salem.internal"]
 # recreate on purpose: blue-green would run two Ollamas side by side and
-# double peak RAM on the 16 GB box.
+# double peak RAM on the 11 GiB box.
 rollout = "recreate"
+# Shared estate service, grouped with uk-tiles on the dashboard.
+project = "shared"
 
   [apps.build]
   dockerfile = "./deploy/Containerfile"
@@ -32,7 +34,7 @@ rollout = "recreate"
   OLLAMA_HOST = "0.0.0.0:11434"
   # Hold a model in RAM for 10 minutes after the last request, then evict
   # (frees ~2 GB); one generation at a time and never two models resident -
-  # this is a CPU box sharing 16 GB with ~20 containers.
+  # this is a CPU box sharing 11 GiB with ~20 containers.
   OLLAMA_KEEP_ALIVE = "10m"
   OLLAMA_NUM_PARALLEL = "1"
   OLLAMA_MAX_LOADED_MODELS = "1"
